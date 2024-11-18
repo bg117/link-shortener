@@ -24,7 +24,7 @@
 		<div class="row justify-content-center">
 			<div class="col-md-6">
 				<h1 class="text-center mb-4">Link Shortener</h1>
-				<form class="mb-4" onsubmit={shorten}>
+				<form class="mb-4" method="POST">
 					<div class="mb-3">
 						<label for="url" class="form-label">URL to shorten</label>
 						<input
