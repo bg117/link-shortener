@@ -1,11 +1,8 @@
-import { pgTable, serial, text, integer } from 'drizzle-orm/pg-core';
-import cryptoRandomString from 'crypto-random-string';
+import { pgTable, serial, text } from 'drizzle-orm/pg-core';
 
 export const links = pgTable('links', {
 	id: serial('id').primaryKey(),
-	slug: text('slug')
-			.unique()
-			.$defaultFn(() => cryptoRandomString({ length: 6, type: 'url-safe' })),
+	slug: text('slug').unique().notNull(),
 	url: text('url').notNull(),
-	passphraseHash: text('passphrase_hash').notNull(),
+	passphraseHash: text('passphrase_hash').notNull()
 });

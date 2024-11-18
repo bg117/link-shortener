@@ -8,6 +8,13 @@
       "when": 1731840980052,
       "tag": "0000_boring_speed",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1731928203809,
+      "tag": "0001_marvelous_frog_thor",
+      "breakpoints": true
     }
   ]
 }
