@@ -1,38 +1,27 @@
-# sv
+# Link Shortener
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is a simple, no-frills link shortener. It's a single page app that uses a database to shorten URLs.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Shorten URLs
+- Manage shortened URLs
 
-```bash
-# create a new project in the current directory
-npx sv create
+That's it! No tracking, no analytics, no ads, no cookies, no tracking pixels, no GDPR consent forms, no dark patterns, no bullshit.
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Inspiration
 
-## Developing
+I wanted to create a simple link shortener that I could use for my own projects. I didn't want to use a third-party service because I didn't want to be dependent on them. I also didn't want to use a service that would track my users or show them ads. So I decided to build my own.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Tech Stack
 
-```bash
-npm run dev
+- Frontend: SvelteKit
+- Backend: DrizzleORM, Supabase
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## License
 
-## Building
+[Mozilla Public License 2.0](LICENSE)
 
-To create a production version of your app:
+## Contributing
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
