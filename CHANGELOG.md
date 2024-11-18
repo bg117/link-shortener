@@ -1,3 +1,9 @@
+## 0.1.2 (2024-11-18)
+
+### Fix
+
+- use passphrase.js in place of generate-passphrase
+
 ## 0.1.1 (2024-11-18)
 
 ## 0.1.0 (2024-11-18)
