@@ -1,19 +1,8 @@
 <script lang="ts">
 	import AdvancedOptions from '$lib/AdvancedOptions.svelte';
+	import type { ActionData } from './$types';
 
-	let submitted = $state(false);
-	let slug = $state('');
-	let passphrase = $state('');
-
-	function shorten(event: Event) {
-		event.preventDefault();
-		const form = event.target as HTMLFormElement;
-		const url = form.url.value;
-
-		submitted = true;
-		slug = Math.random().toString(36).slice(2);
-		passphrase = Math.random().toString(36).slice(2);
-	}
+	let { form }: { form: ActionData } = $props();
 </script>
 
 <div
@@ -43,29 +32,23 @@
 				</form>
 			</div>
 		</div>
-		{#if submitted}
+		{#if form?.success}
 			<div class="row justify-content-center">
 				<div class="col-md-6">
 					<div class="alert alert-secondary" role="alert">
 						<p>
 							<strong>Your shortened link is:</strong>
-							<a
-								href={`
-            ${window.location.origin}/${slug}
-          `}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{window.location.origin}/{slug}
+							<a href={form.url} target="_blank" rel="noopener noreferrer">
+								{form.url}
 							</a>
 						</p>
 						<p>To manage your link, use the following credentials:</p>
 						<p>
 							<strong>Slug:</strong>
-							<code>{slug}</code>
+							<code>{form.slug}</code>
 							<br />
 							<strong>Passphrase:</strong>
-							<code>{passphrase}</code>
+							<code>{form.passphrase}</code>
 						</p>
 						<p></p>
 						<p>Manage your link by clicking the key icon in the top-right corner of the page.</p>
