@@ -2,7 +2,7 @@ import { db } from '$lib/server/db';
 import { links } from '$lib/server/db/schema';
 import type { Actions } from './$types';
 
-import { generate } from 'generate-passphrase';
+import ppjs from 'passphrase.js';
 
 import bcrypt from 'bcrypt';
 import cryptoRandomString from 'crypto-random-string';
@@ -14,7 +14,7 @@ export const actions = {
 		const url = data.get('url') as string;
 		const slug =
 			(data.get('slug') as string) || cryptoRandomString({ length: 8, type: 'url-safe' }); // if no slug is provided, generate a random one
-		const passphrase = generate({ length: 6, separator: ' ', numbers: false }); // generate a passphrase
+		const passphrase = ppjs.genPassPhraseCrypto(6, ppjs.effLarge); // generate a passphrase
 
 		const hash = await bcrypt.hash(passphrase, 10); // hash the passphrase client-side
 

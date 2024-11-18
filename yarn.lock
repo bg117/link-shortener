@@ -1390,11 +1390,6 @@ gauge@^3.0.0:
     strip-ansi "^6.0.1"
     wide-align "^1.1.2"
 
-generate-passphrase@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/generate-passphrase/-/generate-passphrase-1.3.0.tgz#cf169241686774b35db2fad47f38925bbf7419e3"
-  integrity sha512-Zl0ZCMhO1admwWT70wi6RYs6EJ7ukSFow/1FLJKf4venai9kS1/5Dk8jU6b1Is8CUjm/Q0bOKr1yDRUAZ4xdHw==
-
 get-tsconfig@^4.7.0:
   version "4.8.1"
   resolved "https://registry.yarnpkg.com/get-tsconfig/-/get-tsconfig-4.8.1.tgz#8995eb391ae6e1638d251118c7b56de7eb425471"
@@ -1779,6 +1774,11 @@ parent-module@^1.0.0:
   integrity sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==
   dependencies:
     callsites "^3.0.0"
+
+passphrase.js@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/passphrase.js/-/passphrase.js-0.0.3.tgz#36dd116ad33285c2ddc92e3b9ea4a8ba6f2138b3"
+  integrity sha512-1EGwAiJhlylSU2DyzVJFe4+sH6kEWvFEE1vpYUOho1IYyXJi04C1orhcEoowJQi1+lcuhYg18xFvDiEvkEqrSA==
 
 path-exists@^4.0.0:
   version "4.0.0"
