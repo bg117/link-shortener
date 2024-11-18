@@ -19,14 +19,11 @@ export const actions = {
 		const hash = await bcrypt.hash(passphrase, 10); // hash the passphrase client-side
 
 		// insert the new link into the database
-		const entry = await db
-			.insert(links)
-			.values({
-				slug,
-				url,
-				passphraseHash: hash
-			})
-			.returning();
+		await db.insert(links).values({
+			slug,
+			url,
+			passphraseHash: hash
+		});
 
 		return {
 			success: true,
