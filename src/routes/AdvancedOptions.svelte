@@ -1,5 +1,8 @@
 <script>
+	import { enhance } from '$app/forms';
 	import { Key } from 'lucide-svelte';
+
+	let { form } = $props();
 </script>
 
 <div class="position-absolute top-0 end-0 m-3">
@@ -28,8 +31,16 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
 					></button>
 				</div>
-				<form>
+				
+				<form method="POST" action="?/read" on:submit|preventDefault 
+							use:enhance>
 					<div class="modal-body">
+						{#if form?.success === false 
+							/* display alert with form.error as message */}
+							<div class="alert alert-danger" role="alert">
+								<span>{form.error}</span>
+							</div>
+						{/if}
 						<div class="mb-3">
 							<label for="slug" class="form-label">Slug</label>
 							<input id="slug" name="slug" placeholder="url-slug" class="form-control" />
@@ -46,7 +57,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">Manage</button>
+						<button type="submit" class="btn btn-primary">Manage</button>
 					</div>
 				</form>
 			</div>

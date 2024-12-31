@@ -1,5 +1,5 @@
 <script lang="ts">
-	import AdvancedOptions from '$lib/AdvancedOptions.svelte';
+	import AdvancedOptions from './AdvancedOptions.svelte';
 	import type { ActionData } from './$types';
 
 	let { form }: { form: ActionData } = $props();
@@ -8,12 +8,12 @@
 <div
 	class="min-vh-100 d-flex flex-column justify-content-center align-items-center bg-light position-relative"
 >
-	<AdvancedOptions />
+	<AdvancedOptions {form} />
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-6">
 				<h1 class="text-center mb-4">Link Shortener</h1>
-				<form class="mb-4" method="POST">
+				<form class="mb-4" method="POST" action="?/create">
 					<div class="mb-3">
 						<label for="url" class="form-label">URL to shorten</label>
 						<input
@@ -32,7 +32,7 @@
 				</form>
 			</div>
 		</div>
-		{#if form?.success}
+		{#if form?.success && form?.action === 'create'}
 			<div class="row justify-content-center">
 				<div class="col-md-6">
 					<div class="alert alert-secondary" role="alert">
