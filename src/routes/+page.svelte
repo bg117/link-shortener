@@ -13,6 +13,11 @@
 		<div class="row justify-content-center">
 			<div class="col-md-6">
 				<h1 class="text-center mb-4">Link Shortener</h1>
+				{#if form?.success === false}
+					<div class="alert alert-danger" role="alert">
+						<span>{form.error}</span>
+					</div>
+				{/if}
 				<form class="mb-4" method="POST" action="?/create">
 					<div class="mb-3">
 						<label for="url" class="form-label">URL to shorten</label>
@@ -25,16 +30,14 @@
 							class="form-control"
 						/>
 
-						<label for="slug" class="form-label mt-3">Custom slug (optional)</label>
-						<input id="slug" name="slug" placeholder="my-custom-slug" class="form-control" />
+						<label for="slug" class="form-label mt-3">Custom slug
+							(optional)</label>
+						<input id="slug" name="slug" placeholder="my-custom-slug"
+									 class="form-control" />
 					</div>
 					<button type="submit" class="btn btn-primary w-100">Shorten</button>
 				</form>
-			</div>
-		</div>
-		{#if form?.success && form?.action === 'create'}
-			<div class="row justify-content-center">
-				<div class="col-md-6">
+				{#if form?.success && form?.action === 'create'}
 					<div class="alert alert-secondary" role="alert">
 						<p>
 							<strong>Your shortened link is:</strong>
@@ -51,16 +54,17 @@
 							<code>{form.passphrase}</code>
 						</p>
 						<p></p>
-						<p>Manage your link by clicking the key icon in the top-right corner of the page.</p>
+						<p>Manage your link by clicking the key icon in the top-right corner
+							of the page.</p>
 						<small>
 							<em>
-								Note: this passphrase is required to update or delete your 
+								Note: this passphrase is required to update or delete your
 								link. Keep it secure.
 							</em>
 						</small>
 					</div>
-				</div>
+				{/if}
 			</div>
-		{/if}
+		</div>
 	</div>
 </div>

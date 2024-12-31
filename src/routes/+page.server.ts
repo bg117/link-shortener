@@ -16,8 +16,16 @@ export const actions = {
 		const slug =
 			(data.get('slug') as string) || cryptoRandomString({ length: 8, type: 'url-safe' }); // if no slug is provided, generate a random one
 		const passphrase = ppjs.genPassPhraseCrypto(6, ppjs.effLarge); // generate a passphrase
-
 		const hash = await bcrypt.hash(passphrase, 10); // hash the passphrase client-side
+		
+		// check if the slug already exists
+		const [existing] = await db.select().from(links).where(eq(links.slug, slug)).limit(1);
+		if (existing) {
+			return {
+				success: false,
+				error: 'Slug already exists'
+			};
+		}
 
 		// insert the new link into the database
 		await db.insert(links).values({
