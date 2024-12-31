@@ -32,16 +32,31 @@
 									aria-label="Close"></button>
 				</div>
 
-
 				<div class="modal-body">
 					{#if form?.success === false
 						/* display alert with form.error as message */}
 						<div class="alert alert-danger" role="alert">
 							<span>{form.error}</span>
 						</div>
+					{:else if form?.success === true}
+						<div class="alert alert-success" role="alert">
+							<span>
+								{#if form?.action === 'update'}
+									Link updated successfully!
+								{:else if form?.action === 'delete'}
+									Link deleted successfully!
+								{:else}
+									Link retrieved successfully!
+								{/if}
+							</span>
+						</div>
 					{/if}
-					<form method="POST" action="?/read" on:submit|preventDefault
-								use:enhance id="manage-link">
+					<form method="POST" id="manage-link" on:submit|preventDefault
+								use:enhance={() => {
+									return async ({ update }) => {
+										await update({ reset: false });
+									};
+								}}>
 						<div class="mb-3">
 							<label for="slug" class="form-label">Slug</label>
 							<input id="slug" name="slug" placeholder="url-slug"
@@ -58,12 +73,37 @@
 								required
 							/>
 						</div>
+						{#if form?.success === true && form?.action === 'read'}
+							<div class="mb-3">
+								<label for="url" class="form-label">URL</label>
+								<input
+									id="url"
+									name="url"
+									type="url"
+									placeholder="https://example.com"
+									class="form-control"
+									value={form.url}
+									required
+								/>
+							</div>
+						{/if}
 					</form>
-
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary" form="manage-link">
-						Manage
+					{#if form?.success === true && form?.action === 'read'}
+						<button type="submit" class="btn btn-primary" form="manage-link"
+										formaction="?/update">
+							Update
+						</button>
+					{:else}
+						<button type="submit" class="btn btn-primary" form="manage-link"
+										formaction="?/read">
+							Retrieve Link
+						</button>
+					{/if}
+					<button type="submit" class="btn btn-danger" form="manage-link"
+									formaction="?/delete">
+						Delete
 					</button>
 				</div>
 			</div>
