@@ -28,22 +28,24 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h1 class="modal-title fs-5" id="staticBackdropLabel">Manage Link</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"
 					></button>
 				</div>
-				
-				<form method="POST" action="?/read" on:submit|preventDefault 
-							use:enhance>
-					<div class="modal-body">
-						{#if form?.success === false 
-							/* display alert with form.error as message */}
-							<div class="alert alert-danger" role="alert">
-								<span>{form.error}</span>
-							</div>
-						{/if}
+
+
+				<div class="modal-body">
+					{#if form?.success === false
+						/* display alert with form.error as message */}
+						<div class="alert alert-danger" role="alert">
+							<span>{form.error}</span>
+						</div>
+					{/if}
+					<form method="POST" action="?/read" on:submit|preventDefault
+								use:enhance id="manage-link">
 						<div class="mb-3">
 							<label for="slug" class="form-label">Slug</label>
-							<input id="slug" name="slug" placeholder="url-slug" 
+							<input id="slug" name="slug" placeholder="url-slug"
 										 class="form-control" required />
 						</div>
 						<div class="mb-3">
@@ -57,11 +59,14 @@
 								required
 							/>
 						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary">Manage</button>
-					</div>
-				</form>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" form="manage-link">
+						Manage
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
