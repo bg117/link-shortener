@@ -54,7 +54,8 @@
 						<p>Manage your link by clicking the key icon in the top-right corner of the page.</p>
 						<small>
 							<em>
-								Note: this passphrase is required to update or delete your link. keep it secure.
+								Note: this passphrase is required to update or delete your 
+								link. Keep it secure.
 							</em>
 						</small>
 					</div>
