@@ -43,7 +43,8 @@
 						{/if}
 						<div class="mb-3">
 							<label for="slug" class="form-label">Slug</label>
-							<input id="slug" name="slug" placeholder="url-slug" class="form-control" />
+							<input id="slug" name="slug" placeholder="url-slug" 
+										 class="form-control" required />
 						</div>
 						<div class="mb-3">
 							<label for="passphrase" class="form-label">Passphrase</label>
@@ -53,6 +54,7 @@
 								type="password"
 								placeholder="Passphrase"
 								class="form-control"
+								required
 							/>
 						</div>
 					</div>
